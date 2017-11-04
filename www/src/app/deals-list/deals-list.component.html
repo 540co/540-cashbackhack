@@ -18,6 +18,9 @@
           <div *ngIf="deal.expires">
             <strong>Expires: </strong> {{deal.expires | amDateFormat:'LL'}}
           </div>
+          <div>
+            <em><strong>Source:</strong> {{deal.app}}</em>
+          </div>
         </div>
         <a href="#" class="btn btn-primary">Shop Now</a>
       </div>

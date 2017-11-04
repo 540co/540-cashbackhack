@@ -60,7 +60,7 @@ export class DealsListComponent implements OnInit, OnChanges  {
       }
     }
 
-    for (var i = 0, len = deals.cashback; i < len; i++) {
+    for (var i = 0, len = deals.cashback.length; i < len; i++) {
       var deal = deals.cashback[i];
       deal.dealType = "cashback";
       deal.app = "ebates";
