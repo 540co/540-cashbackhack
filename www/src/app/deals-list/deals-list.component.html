@@ -1,0 +1,44 @@
+<div *ngIf="loading">
+  <span class="fa fa-3x fa-spin fa-spinner"></span>
+</div>
+
+<div class="row deals-list" *ngIf="!loading">
+  <div class="col col-sm-6 col-md-4 d-flex align-items-stretch" *ngFor="let deal of myDeals">
+    <div class="card" *ngIf="deal.dealType=='coupon'">
+      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+      <div class="card-body">
+        <h4 class="card-title">{{deal.name}}</h4>
+        <h6><span class="badge badge-info" *ngIf="deal.type">{{deal.type | lowercase}}</span></h6>
+        <h6><span class="badge badge-info" *ngIf="!deal.type">{{deal.dealType | lowercase}}</span></h6>
+        <div class="card-text">
+          <p class="desc">{{deal.description}}</p>
+          <div *ngIf="deal.code">
+            <strong>Code: </strong> {{deal.code}}
+          </div>
+          <div *ngIf="deal.expires">
+            <strong>Expires: </strong> {{deal.expires | amDateFormat:'LL'}}
+          </div>
+        </div>
+        <a href="#" class="btn btn-primary">Shop Now</a>
+      </div>
+    </div>
+
+    <div class="card" *ngIf="deal.dealType=='cashback'">
+      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+      <div class="card-body">
+        <h4 class="card-title">{{deal.name}}</h4>
+        <h6><span class="badge badge-success">cashback</span></h6>
+        <div class="card-text">
+          <p class="desc">{{deal.description}}</p>
+          <div *ngIf="deal.reward.total.display == 'Percentage'">
+            {{deal.reward.total.amount}}% cash back
+          </div>
+          <div *ngIf="deal.expires">
+            <strong>Expires: </strong> {{deal.expires | amDateFormat:'LL'}}
+          </div>
+        </div>
+        <a href="#" class="btn btn-primary">Shop Now</a>
+      </div>
+    </div>
+  </div>
+</div>
